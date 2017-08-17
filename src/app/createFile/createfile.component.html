@@ -1,0 +1,28 @@
+<h1 md-dialog-title>Новый файл</h1>
+<md-select placeholder="Тип файла" [(ngModel)]="selectedType">
+  <md-option *ngFor="let type of types" [value]="type">
+    {{ type }}
+  </md-option>
+</md-select>
+
+<md-dialog-content *ngIf="selectedType == 'html' || selectedType == 'txt'">
+  <md-input-container>
+    <input mdInput placeholder="Имя файла" value="" required [formControl]="nameFormControl" [(ngModel)]="fileName" >
+    <md-error *ngIf="nameFormControl.hasError('required')">
+      Name is <strong>required</strong>
+    </md-error> 
+  </md-input-container>
+
+  <textarea rows="20" placeholder="Текст" [(ngModel)]="content"></textarea>
+</md-dialog-content>
+
+<md-dialog-content *ngIf="selectedType == 'image'">
+
+  <image-upload  [max]="1" (onFileUploadFinish)="fileLoad($event)"></image-upload>
+</md-dialog-content>
+
+<md-dialog-actions align="end" layout="row">
+    <button md-dialog-close md-button class="btn btn-primary">Закрыть</button>
+    <button md-dialog-close [disabled]="nameFormControl.hasError('required') && selectedType != 'image'" (click)="this.addFile()" md-button class="btn btn-default">Создать</button>
+</md-dialog-actions>
+

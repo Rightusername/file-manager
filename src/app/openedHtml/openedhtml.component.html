@@ -1,0 +1,11 @@
+<h1 md-dialog-title>{{filesService.openedFile.name}}</h1>
+
+<md-dialog-content>
+    <div class="wrap" [innerHTML]='filesService.openedFile.content'></div>
+</md-dialog-content>
+
+
+<md-dialog-actions align="end" layout="row">
+    <button md-dialog-close md-button class="btn btn-primary">Закрыть</button>
+</md-dialog-actions>
+

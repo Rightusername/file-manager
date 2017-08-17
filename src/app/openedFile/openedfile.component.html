@@ -1,0 +1,19 @@
+<h1 md-dialog-title>{{filesService.openedFile.name}}</h1>
+
+<md-dialog-content>
+  <md-input-container>
+    <input mdInput placeholder="Имя файла" value="" required [formControl]="nameFormControl" [(ngModel)]="edit.name" >
+    <md-error *ngIf="nameFormControl.hasError('required')">
+      Name is <strong>required</strong>
+    </md-error> 
+  </md-input-container>
+
+  <textarea rows="20" placeholder="Текст" [(ngModel)]="edit.content"></textarea>
+</md-dialog-content>
+
+
+<md-dialog-actions align="end" layout="row">
+    <button md-dialog-close md-button class="btn btn-primary">Закрыть</button>
+    <button md-dialog-close [disabled]="nameFormControl.hasError('required')" (click)="this.editFile()" md-button class="btn btn-default">Сохранить</button>
+</md-dialog-actions>
+
