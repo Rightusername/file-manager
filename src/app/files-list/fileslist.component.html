@@ -1,7 +1,7 @@
-<div *ngIf="filesService.files.length == 0" class="text-center label">Файлов нет</div>
+<div *ngIf="this.filesService.files.length == 0" class="text-center label">Файлов нет</div>
 
 
-<div *ngIf="filesService.files.length > 0" class="">
+<div *ngIf="this.filesService.files.length > 0" class="">
 <md-tab-group>
   <md-tab label="Список файлов">
       <div class="wrap">
@@ -13,24 +13,24 @@
         </tr>
 
         <tr *ngFor="let file of sortedData"  (dblclick)="openDialogOpenFile(file)" class="list_item">
-            <td class="tdName">{{file.name}}</td>
-            <td class="tdType">{{file.type || file.ext}}</td>
-            <td class="tdMenu">
-                <md-icon (click)="filesService.toggleFavorite(file)" *ngIf="!file.favorite">bookmark_border</md-icon>
-                <md-icon (click)="filesService.toggleFavorite(file)" *ngIf="file.favorite">bookmark</md-icon> 
+            <td class="tdName" *ngIf="filesService.isMatch(file)">{{file.name}}</td>
+            <td class="tdType" *ngIf="filesService.isMatch(file)">{{file.type || file.ext}}</td>
+            <td class="tdMenu" *ngIf="filesService.isMatch(file)">
+                <md-icon (click)="this.filesService.toggleFavorite(file)" *ngIf="!file.favorite">bookmark_border</md-icon>
+                <md-icon (click)="this.filesService.toggleFavorite(file)" *ngIf="file.favorite">bookmark</md-icon> 
                
                 <md-menu #appMenu="mdMenu">
                     <a *ngIf="file.type=='image'" md-menu-item [href]="file.content" [download]='file.name'>Cкачать</a>
                     <button *ngIf="file.type!='image'" md-menu-item (click)="downloadFile(file)"> Cкачать </button>
                     <button md-menu-item (click)="openDialogRename(file)"> Переименовать </button>
                     <button *ngIf="file.type=='html'" md-menu-item (click)="openDialogEditFile(file)"> Редактировать </button>
-                    <button md-menu-item (click)="filesService.deleteFile(file)">Удалить</button>
+                    <button md-menu-item (click)="this.filesService.deleteFile(file)">Удалить</button>
                 </md-menu>
 
                 <md-icon md-icon-button [mdMenuTriggerFor]="appMenu" >more_vert</md-icon>
-
             </td>
         </tr>
+       
     </table>
       </div>
 
@@ -45,20 +45,20 @@
             </tr>
 
             <tr *ngFor="let file of sortedData" (dblclick)="openDialogOpenFile(file)" class="list_item">
-
-                    <td class="tdName" *ngIf="file.favorite">{{file.name}}</td>
-                    <td class="tdType" *ngIf="file.favorite">{{file.ext}}</td>
                     
-                    <td class="tdMenu" *ngIf="file.favorite">
-                        <md-icon (click)="filesService.toggleFavorite(file)"  *ngIf="!file.favorite">bookmark_border</md-icon>
-                        <md-icon (click)="filesService.toggleFavorite(file)"  *ngIf="file.favorite">bookmark</md-icon>
+                    <td class="tdName" *ngIf="file.favorite && filesService.isMatch(file)">{{file.name}}</td>
+                    <td class="tdType" *ngIf="file.favorite && filesService.isMatch(file)">{{file.ext}}</td>
+                    
+                    <td class="tdMenu" *ngIf="file.favorite && filesService.isMatch(file)">
+                        <md-icon (click)="this.filesService.toggleFavorite(file)"  *ngIf="!file.favorite">bookmark_border</md-icon>
+                        <md-icon (click)="this.filesService.toggleFavorite(file)"  *ngIf="file.favorite">bookmark</md-icon>
                         
                         <md-menu #appMenu="mdMenu">
                             <a *ngIf="file.type=='image'" md-menu-item [href]="file.content" [download]='file.name'>Cкачать</a>
                             <button *ngIf="file.type!='image'" md-menu-item (click)="downloadFile(file)"> Cкачать </button>
                             <button md-menu-item (click)="openDialogRename(file)"> Переименовать </button>
                             <button *ngIf="file.type=='html'" md-menu-item (click)="openDialogEditFile(file)"> Редактировать </button>
-                            <button md-menu-item (click)="filesService.deleteFile(file)">Удалить</button>
+                            <button md-menu-item (click)="this.filesService.deleteFile(file)">Удалить</button>
                         </md-menu>
 
                         <md-icon md-icon-button [mdMenuTriggerFor]="appMenu" >more_vert</md-icon>

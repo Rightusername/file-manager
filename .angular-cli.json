@@ -22,7 +22,9 @@
         "styles.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/mdbootstrap/css/bootstrap.min.css",
-        "../node_modules/mdbootstrap/css/mdb.min.css"
+        "../node_modules/mdbootstrap/css/mdb.min.css",
+        "../node_modules/quill/dist/quill.bubble.css",
+        "../node_modules/quill/dist/quill.snow.css"
       ],
       "scripts": [
         "../node_modules/mdbootstrap/js/popper.min.js",

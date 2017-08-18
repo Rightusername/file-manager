@@ -13,7 +13,7 @@ export class OpenedImageComponent {
     edit = new File(this.filesService.openedFile.name, this.filesService.openedFile.content, this.filesService.openedFile.type);
     image = new Image();
 
-    constructor(private filesService: FilesService){
+    constructor(public filesService: FilesService){
 
     }
 

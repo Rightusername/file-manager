@@ -11,13 +11,12 @@ import { CreateFileComponent } from "../createFile/createfile.component";
 })
 export class NavbarComponent {
 
-    constructor( private filesSerice : FilesService, public dialog: MdDialog){
+    constructor( public filesService : FilesService, public dialog: MdDialog){
         
     }
 
     openDialog() {
         this.dialog.open(CreateFileComponent);
     }
-
 
 }

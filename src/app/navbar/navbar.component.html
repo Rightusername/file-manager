@@ -1,9 +1,10 @@
     
 <nav class="navbar navbar-toggleable-md navbar-dark bg-primary">
-        <md-input-container color="white">
-          <input mdInput placeholder="Search" value="">
-        </md-input-container>
-        <button class="addBtn" md-fab (click)="openDialog()"><md-icon>add</md-icon></button>
+  <div class="inputwrap">  
+    <label for="search"><span mdPrefix><md-icon>search</md-icon></span></label>
+    <input id="search" type="text" placeholder="Search" value="" [(ngModel)]='this.filesService.filter'>
+  </div>
+  <button class="addBtn" md-fab (click)="openDialog()"><md-icon>add</md-icon></button>
 
 </nav>
 

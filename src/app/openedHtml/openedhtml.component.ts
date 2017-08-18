@@ -11,7 +11,7 @@ import { File } from '../File';
 export class OpenedHtmlComponent {
 
     edit = new File(this.filesService.openedFile.name, this.filesService.openedFile.content, this.filesService.openedFile.type);
-    constructor(private filesService: FilesService){
+    constructor(public filesService: FilesService){
         
     }
 

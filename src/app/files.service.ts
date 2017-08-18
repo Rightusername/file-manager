@@ -6,9 +6,16 @@ import { NotificationService } from "./notification.service";
 export class FilesService {
     files : File[] = [];
     openedFile : File;
+    filter = '';
     
     constructor( private notification: NotificationService ){
         this.getFiles();
+    }
+
+    isMatch(file){
+        var re = new RegExp(this.filter.replace(/[*\[|\]\(\)]/ig,''), 'ig');
+        if(file.name.match(re)) return true;
+        return false;
     }
 
     addFile(name, content, type){

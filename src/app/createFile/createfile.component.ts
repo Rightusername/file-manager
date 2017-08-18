@@ -21,7 +21,7 @@ export class CreateFileComponent {
     types = ['html', 'image', 'txt'];
     nameFormControl = new FormControl('', [ Validators.required ] );
 
-    constructor(private filesService: FilesService, private notification: NotificationService){
+    constructor(public filesService: FilesService, public notification: NotificationService){
 
     }
     

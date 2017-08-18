@@ -20,7 +20,7 @@ import { RenameDialogComponent } from "./renamedialog/renamedialog.component";
 import { FileSaverModule } from 'ngx-filesaver';
 import { OpenedHtmlComponent } from "./openedHtml/openedhtml.component";
 import { NotificationService } from "./notification.service";
-
+import { QuillModule } from 'ngx-quill'
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { NotificationService } from "./notification.service";
     FormsModule,
     ReactiveFormsModule,
     FileSaverModule,
+    QuillModule,
     ImageUploadModule.forRoot()
   ],
   entryComponents: [

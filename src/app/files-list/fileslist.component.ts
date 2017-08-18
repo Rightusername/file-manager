@@ -18,7 +18,7 @@ export class FilesListComponent {
     sortedData;
     sidenav;
 
-    constructor(private filesService: FilesService, public dialog: MdDialog, private notification: NotificationService){
+    constructor(public filesService: FilesService, public dialog: MdDialog, public notification: NotificationService){
         this.sortedData = filesService.files;
     }
 

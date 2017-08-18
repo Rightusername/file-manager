@@ -11,7 +11,7 @@ import { File } from '../File';
 export class OpenedFileComponent {
     nameFormControl = new FormControl('', [ Validators.required ] );
     edit = new File(this.filesService.openedFile.name, this.filesService.openedFile.content, this.filesService.openedFile.type);
-    constructor(private filesService: FilesService){
+    constructor(public filesService: FilesService){
 
     }
 
@@ -20,5 +20,6 @@ export class OpenedFileComponent {
         this.filesService.files[this.filesService.files.indexOf(this.filesService.openedFile)].content = this.edit.content;
         this.filesService.saveFiles();
     }
+
 
 }

@@ -2,11 +2,40 @@
     margin: 0;
 }
 
+nav{
+    min-width: 340px;
+}
+
 md-input-container{
     color: white;
 }
 
 .addBtn{
-    margin-right: 20px;
+    margin-right: 10px;
     background: #48c4f9;
+}
+
+
+.inputwrap{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    width: 200px;
+
+    input{
+        width: 200px;
+        background: white;
+        border: none;
+        padding: 5px;
+        margin-left: 20px;
+        box-shadow: 0 0px 1px rgba(0,0,0,0.25), 0 3px 3px rgba(0,0,0,0.22);
+    }
+
+    md-icon{
+        vertical-align: middle;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+    }
 }

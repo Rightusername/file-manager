@@ -15,7 +15,7 @@ export class RenameDialogComponent {
     edit = new File(this.filesService.openedFile.name, this.filesService.openedFile.content, this.filesService.openedFile.type);
     image = new Image();
 
-    constructor( private filesService: FilesService, private notification: NotificationService ){
+    constructor( public filesService: FilesService, public notification: NotificationService ){
         console.log(this.image.src , this.edit.content);
     }
 
